@@ -16,8 +16,8 @@ public class StoreEntryEvent extends ApplicationEvent {
 	private final LocalDateTime entryTime;
 
 	public StoreEntryEvent(Object source, String courierId, String storeName,
-	                       double courierLatitude, double courierLongitude,
-	                       double distanceToStore, LocalDateTime entryTime) {
+							double courierLatitude, double courierLongitude,
+							double distanceToStore, LocalDateTime entryTime) {
 		super(source);
 		this.courierId = courierId;
 		this.storeName = storeName;

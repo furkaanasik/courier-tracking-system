@@ -2,6 +2,7 @@ package com.furkanasikdev.courier.tracking.service;
 
 import com.furkanasikdev.courier.tracking.entity.Courier;
 import com.furkanasikdev.courier.tracking.entity.CourierLocation;
+import com.furkanasikdev.courier.tracking.exception.CourierNotFoundException;
 import com.furkanasikdev.courier.tracking.repository.CourierLocationRepository;
 import com.furkanasikdev.courier.tracking.repository.CourierRepository;
 import lombok.RequiredArgsConstructor;
@@ -41,10 +42,13 @@ public class CourierService {
 	public double getTotalDistance(String courierId) {
 		return this.courierRepository.findById(courierId)
 				.map(Courier::getTotalDistance)
-				.orElse(0.0);
+				.orElseThrow(() -> new CourierNotFoundException(courierId));
 	}
 
 	public List<CourierLocation> getLocations(String courierId) {
+		if (!this.courierRepository.existsById(courierId)) {
+			throw new CourierNotFoundException(courierId);
+		}
 		return this.courierLocationRepository.findByCourierIdOrderByTimestampAsc(courierId);
 	}
 }

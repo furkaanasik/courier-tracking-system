@@ -11,8 +11,6 @@ import java.time.LocalDateTime;
 @Table(name = "couriers")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
 public class Courier {
 
