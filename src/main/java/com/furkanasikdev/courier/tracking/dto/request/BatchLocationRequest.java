@@ -1,0 +1,21 @@
+package com.furkanasikdev.courier.tracking.dto.request;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class BatchLocationRequest {
+
+	@NotEmpty(message = "Locations list cannot be empty")
+	@Valid
+	private List<LocationRequest> locations;
+}

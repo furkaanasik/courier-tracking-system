@@ -22,7 +22,7 @@ public class StoreEntryListener {
 		StoreEntry entry = StoreEntry.builder()
 				.courierId(event.getCourierId())
 				.storeName(event.getStoreName())
-				.entryTime(event.getTimestamp())
+				.entryTime(event.getEntryTime())
 				.distanceToStore(event.getDistanceToStore())
 				.courierLatitude(event.getCourierLatitude())
 				.courierLongitude(event.getCourierLongitude())

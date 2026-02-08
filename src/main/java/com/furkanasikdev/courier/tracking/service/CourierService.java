@@ -1,11 +1,15 @@
 package com.furkanasikdev.courier.tracking.service;
 
 import com.furkanasikdev.courier.tracking.entity.Courier;
+import com.furkanasikdev.courier.tracking.entity.CourierLocation;
+import com.furkanasikdev.courier.tracking.repository.CourierLocationRepository;
 import com.furkanasikdev.courier.tracking.repository.CourierRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -13,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class CourierService {
 
 	private final CourierRepository courierRepository;
+	private final CourierLocationRepository courierLocationRepository;
 
 	public Courier getOrCreate(String courierId) {
 		return this.courierRepository.findById(courierId)
@@ -37,5 +42,9 @@ public class CourierService {
 		return this.courierRepository.findById(courierId)
 				.map(Courier::getTotalDistance)
 				.orElse(0.0);
+	}
+
+	public List<CourierLocation> getLocations(String courierId) {
+		return this.courierLocationRepository.findByCourierIdOrderByTimestampAsc(courierId);
 	}
 }

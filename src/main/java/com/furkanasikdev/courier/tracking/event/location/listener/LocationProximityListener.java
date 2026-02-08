@@ -37,7 +37,7 @@ public class LocationProximityListener {
 								event.getLatitude(),
 								event.getLongitude(),
 								distance,
-								event.getTimestamp()
+								event.getEntryTime()
 						));
 
 						log.info("Courier {} entered store {} (distance: {}km)", event.getCourierId(), storeName, distance);

@@ -11,13 +11,13 @@ public class LocationReceivedEvent extends ApplicationEvent {
 	private final String courierId;
 	private final double latitude;
 	private final double longitude;
-	private final LocalDateTime timestamp;
+	private final LocalDateTime entryTime;
 
-	public LocationReceivedEvent(Object source, String courierId, double latitude, double longitude, LocalDateTime timestamp) {
+	public LocationReceivedEvent(Object source, String courierId, double latitude, double longitude, LocalDateTime entryTime) {
 		super(source);
 		this.courierId = courierId;
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.timestamp = timestamp;
+		this.entryTime = entryTime;
 	}
 }
