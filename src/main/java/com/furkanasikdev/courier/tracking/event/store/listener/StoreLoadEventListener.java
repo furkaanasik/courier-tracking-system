@@ -1,6 +1,6 @@
-package com.furkanasikdev.courier.tracking.store.listener;
+package com.furkanasikdev.courier.tracking.event.store.listener;
 
-import com.furkanasikdev.courier.tracking.store.event.StoreLoadEvent;
+import com.furkanasikdev.courier.tracking.event.store.StoreLoadEvent;
 import com.furkanasikdev.courier.tracking.service.StoreLoaderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

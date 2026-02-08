@@ -1,6 +1,6 @@
-package com.furkanasikdev.courier.tracking.store.job;
+package com.furkanasikdev.courier.tracking.event.store.job;
 
-import com.furkanasikdev.courier.tracking.store.event.StoreLoadEvent;
+import com.furkanasikdev.courier.tracking.event.store.StoreLoadEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.event.ApplicationReadyEvent;

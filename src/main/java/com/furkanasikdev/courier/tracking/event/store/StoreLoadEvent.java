@@ -1,4 +1,4 @@
-package com.furkanasikdev.courier.tracking.store.event;
+package com.furkanasikdev.courier.tracking.event.store;
 
 import org.springframework.context.ApplicationEvent;
 
