@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.data.geo.Point;
 import org.springframework.data.redis.connection.RedisGeoCommands;
+import org.springframework.data.redis.core.GeoOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,7 @@ public class StoreLoaderService {
 
 	private static final String STORES_GEO_KEY = "stores:geo";
 
-	private final StringRedisTemplate redisTemplate;
+	private final GeoOperations<String, String> geoOperations;
 	private final ObjectMapperService objectMapperService;
 
 	@Value("${app.tracking.stores-file}")
@@ -37,7 +38,7 @@ public class StoreLoaderService {
 		log.debug("Parsed {} stores from JSON file", this.stores.size());
 
 		this.stores.forEach(store -> {
-			this.redisTemplate.opsForGeo().add(
+			this.geoOperations.add(
 					STORES_GEO_KEY,
 					new RedisGeoCommands.GeoLocation<>(
 							store.name(),
