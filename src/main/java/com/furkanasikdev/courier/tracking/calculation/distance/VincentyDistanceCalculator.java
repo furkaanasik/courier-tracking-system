@@ -19,6 +19,10 @@ public class VincentyDistanceCalculator implements DistanceCalculationStrategy {
 
 	@Override
 	public double calculateDistance(double startLat, double startLng, double endLat, double endLng) {
+		if (startLat == endLat && startLng == endLng) {
+			return 0.0;
+		}
+
 		double U1 = Math.atan((1 - FLATTENING) * Math.tan(Math.toRadians(startLat)));
 		double U2 = Math.atan((1 - FLATTENING) * Math.tan(Math.toRadians(endLat)));
 		double sinU1 = Math.sin(U1);
