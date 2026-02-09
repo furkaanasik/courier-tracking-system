@@ -26,10 +26,10 @@ spring:
         format_sql: true
   data:
     redis:
-      repositories:
-        enabled: false
       host: localhost
       port: 6379
+      repositories:
+        enabled: false
 
 server:
   port: 8080
@@ -48,3 +48,12 @@ app:
     stores-file: classpath:stores.json
   calculation:
     distance-strategy: haversine
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
