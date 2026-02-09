@@ -1,5 +1,6 @@
 package com.furkanasikdev.courier.tracking.controller;
 
+import com.furkanasikdev.courier.tracking.controller.doc.CourierControllerDoc;
 import com.furkanasikdev.courier.tracking.dto.request.BatchLocationRequest;
 import com.furkanasikdev.courier.tracking.dto.request.LocationRequest;
 import com.furkanasikdev.courier.tracking.dto.response.BatchLocationResponse;
@@ -22,12 +23,13 @@ import java.util.List;
 @RequestMapping("/api/v1/courier")
 @RequiredArgsConstructor
 @Slf4j
-public class CourierController {
+public class CourierController implements CourierControllerDoc {
 
 	private final TrackingService trackingService;
 	private final CourierService courierService;
 	private final StoreService storeService;
 
+	@Override
 	@PostMapping("/location")
 	public ResponseEntity<Void> sendLocation(@Valid @RequestBody LocationRequest request) {
 		log.debug("Location received for courier {}", request.getCourierId());
@@ -42,6 +44,7 @@ public class CourierController {
 		return ResponseEntity.ok().build();
 	}
 
+	@Override
 	@PostMapping("/locations/batch")
 	public ResponseEntity<BatchLocationResponse> sendBatchLocations(@Valid @RequestBody BatchLocationRequest request) {
 		log.debug("Batch location received: {} locations", request.getLocations().size());
@@ -73,6 +76,7 @@ public class CourierController {
 				.build());
 	}
 
+	@Override
 	@GetMapping("/{courierId}/distance")
 	public ResponseEntity<DistanceResponse> getTotalDistance(@PathVariable String courierId) {
 		double totalDistance = this.courierService.getTotalDistance(courierId);
@@ -83,11 +87,13 @@ public class CourierController {
 				.build());
 	}
 
+	@Override
 	@GetMapping("/{courierId}/locations")
 	public ResponseEntity<List<CourierLocation>> getCourierLocations(@PathVariable String courierId) {
 		return ResponseEntity.ok(this.courierService.getLocations(courierId));
 	}
 
+	@Override
 	@GetMapping("/{courierId}/store-entries")
 	public ResponseEntity<List<StoreEntry>> getCourierStoreEntries(@PathVariable String courierId) {
 		return ResponseEntity.ok(this.storeService.getEntriesByCourierId(courierId));

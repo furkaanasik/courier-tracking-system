@@ -1,5 +1,6 @@
 package com.furkanasikdev.courier.tracking.controller;
 
+import com.furkanasikdev.courier.tracking.controller.doc.StoreControllerDoc;
 import com.furkanasikdev.courier.tracking.entity.StoreEntry;
 import com.furkanasikdev.courier.tracking.service.StoreService;
 import lombok.RequiredArgsConstructor;
@@ -13,10 +14,11 @@ import java.util.List;
 @RequestMapping("/api/v1/store")
 @RequiredArgsConstructor
 @Slf4j
-public class StoreController {
+public class StoreController implements StoreControllerDoc {
 
 	private final StoreService storeService;
 
+	@Override
 	@GetMapping("/{storeName}/entries")
 	public ResponseEntity<List<StoreEntry>> getStoreEntries(@PathVariable String storeName) {
 		return ResponseEntity.ok(this.storeService.getStoreEntries(storeName));
