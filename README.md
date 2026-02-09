@@ -86,9 +86,17 @@ Profile-based logging configuration:
 | prod | JSON file|
 | staging | Console + JSON|
 
-## Usage Examples
+## Usage Examples & Scripts
 
-### 1. Send Locations
+### 1. Automated Simulation Script
+```
+chmod +x simulate.sh
+
+./simulate.sh
+```
+
+### 2. Manual API Calls (CURL)
+
 
 ```bash
 # Location 1 - Near Ataşehir MMM Migros
@@ -120,17 +128,7 @@ curl -X POST http://localhost:8080/api/v1/courier/location \
     "longitude": 29.1245,
     "timestamp": "2024-02-08T14:32:00"
   }'
-```
 
-### 2. Query Total Distance
-
-```bash
+# Total Distance
 curl http://localhost:8080/api/v1/courier/CRR-123/distance
-```
-Response;
-```json
-{
-  "courierId": "CRR-123",
-  "totalDistanceKm": 1.9733360224303877
-}
 ```
