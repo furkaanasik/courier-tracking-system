@@ -64,7 +64,7 @@ public class StoreProximityService {
 
 	public boolean isReentry(String courierId, String storeName) {
 		String key = String.format(REENTRY_KEY_PREFIX, courierId, storeName);
-		return Boolean.TRUE.equals(this.redisTemplate.hasKey(key));
+		return this.redisTemplate.hasKey(key);
 	}
 
 	public void markEntry(String courierId, String storeName) {

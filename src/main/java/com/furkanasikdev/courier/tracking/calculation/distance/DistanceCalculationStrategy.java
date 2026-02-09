@@ -4,5 +4,4 @@ public interface DistanceCalculationStrategy {
 
 	double calculateDistance(double startLat, double startLng, double endLat, double endLng);
 
-	double calculateDistanceInMeters(double startLat, double startLng, double endLat, double endLng);
 }

@@ -57,8 +57,4 @@ public class VincentyDistanceCalculator implements DistanceCalculationStrategy {
 		return distanceMt / 1000;
 	}
 
-	@Override
-	public double calculateDistanceInMeters(double startLat, double startLng, double endLat, double endLng) {
-		return this.calculateDistance(startLat, startLng, endLat, endLng) * 1000;
-	}
 }

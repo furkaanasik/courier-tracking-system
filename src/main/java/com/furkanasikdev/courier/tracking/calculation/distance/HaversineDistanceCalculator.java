@@ -32,8 +32,4 @@ public class HaversineDistanceCalculator implements DistanceCalculationStrategy 
 		return EARTH_RADIUS_KM * c;
 	}
 
-	@Override
-	public double calculateDistanceInMeters(double startLat, double startLng, double endLat, double endLng) {
-		return this.calculateDistance(startLat, startLng, endLat, endLng) * 1000;
-	}
 }
